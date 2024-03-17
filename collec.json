@@ -1,0 +1,238 @@
+{
+  "info": {
+    "_postman_id": "4cd07f27-10e7-48b3-82d4-1a03b9bdf0a3",
+    "name": "QKart Backend",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "/users",
+      "item": [
+        {
+          "name": "/:id",
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "id": "aaa81fef-5994-43c8-8a6f-2af0f6384cab",
+                "exec": [""],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "id": "07ab32e7-220b-4f81-b626-b3c9ac997343",
+          "request": {
+            "auth": { "type": "bearer", "bearer": { "token": "{{token}}" } },
+            "method": "GET",
+            "header": [],
+            "url": "{{workspaceIp}}:8082/v1/users/<user-id>"
+          },
+          "response": []
+        },
+        {
+          "name": "/:id?q=address",
+          "id": "6ffeb0bd-89da-4df4-89a8-9b654995b9cc",
+          "request": {
+            "auth": { "type": "bearer", "bearer": { "token": "{{token}}" } },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{workspaceIp}}:8082/v1/users/<user-id>?q=address",
+              "host": ["{{workspaceIp}}"],
+              "port": "8082",
+              "path": ["v1", "users", "<user-id>"],
+              "query": [{ "key": "q", "value": "address" }]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "/:id",
+          "id": "28e5405e-bd3c-4d66-9ae0-9b52cebc030d",
+          "request": {
+            "auth": { "type": "bearer", "bearer": { "token": "{{token}}" } },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"address\": \"This is my long random address hopefully satisfying the minimum length criteria\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{workspaceIp}}:8082/v1/users/6012894d4875a1063703ec17"
+          },
+          "response": []
+        }
+      ],
+      "id": "89bdf884-6c8a-42f5-b329-be273367dc1e"
+    },
+    {
+      "name": "/auth",
+      "item": [
+        {
+          "name": "/login",
+          "id": "6543f56f-b2e6-4b0a-8f8c-6cfe6dd6eb21",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"crio-users@gmail.com\",\n    \"password\": \"criouser123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{workspaceIp}}:8082/v1/auth/login"
+          },
+          "response": []
+        },
+        {
+          "name": "/register",
+          "id": "8472bcaf-6102-4735-a671-8cf5ab6765ca",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"crio-users\",\n    \"email\": \"crio-users@gmail.com\",\n    \"password\": \"criouser123\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{workspaceIp}}:8082/v1/auth/register"
+          },
+          "response": []
+        }
+      ],
+      "id": "286f3d48-6711-4afd-b98d-5fae907f88b2"
+    },
+    {
+      "name": "/products",
+      "item": [
+        {
+          "name": "/",
+          "id": "15f0b84a-f68c-46e4-8ec2-8ea976e81e46",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{workspaceIp}}:8082/v1/products"
+          },
+          "response": []
+        },
+        {
+          "name": "/:productId",
+          "id": "aab2fb63-3dfd-4dc1-a877-f31bb92991f8",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{workspaceIp}}:8082/v1/products/<product-id>"
+          },
+          "response": []
+        }
+      ],
+      "id": "64a9b88f-ae65-41e3-9907-1989fbb5220c"
+    },
+    {
+      "name": "/cart",
+      "item": [
+        {
+          "name": "/",
+          "id": "df6d5d14-0428-4bf3-bc68-207d9daf0da2",
+          "protocolProfileBehavior": { "disableBodyPruning": true },
+          "request": {
+            "auth": { "type": "bearer", "bearer": { "token": "{{token}}" } },
+            "method": "GET",
+            "header": [],
+            "body": { "mode": "raw", "raw": "" },
+            "url": "{{workspaceIp}}:8082/v1/cart"
+          },
+          "response": []
+        },
+        {
+          "name": "/",
+          "id": "13154e14-7d0e-4ba5-a0ec-21d3b3848bea",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDEyODk0ZDQ4NzVhMTA2MzcwM2VjMTciLCJpYXQiOjE2MTE4Mjc1MzMsImV4cCI6MTYxMTg0MTkzMywidHlwZSI6ImFjY2VzcyJ9.FZC0NMVSvZi8qk9PJDY-CvUAwDDlmGN3FtB2-rN1Jcg"
+              }
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"productId\": \"6005913ffaa2bffe60466952\",\n    \"quantity\": 10\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{workspaceIp}}:8082/v1/cart"
+          },
+          "response": []
+        },
+        {
+          "name": "/",
+          "id": "d815f7ee-c2df-4962-837c-b3cf95532aaf",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDEyODk0ZDQ4NzVhMTA2MzcwM2VjMTciLCJpYXQiOjE2MTE4Mjc1MzMsImV4cCI6MTYxMTg0MTkzMywidHlwZSI6ImFjY2VzcyJ9.FZC0NMVSvZi8qk9PJDY-CvUAwDDlmGN3FtB2-rN1Jcg"
+              }
+            },
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"productId\": \"6005913ffaa2bffe60466952\",\n    \"quantity\": 0\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": "{{workspaceIp}}:8082/v1/cart"
+          },
+          "response": []
+        },
+        {
+          "name": "/checkout",
+          "id": "efceb482-e892-4362-b2ee-c156ec44e7ac",
+          "request": {
+            "auth": { "type": "bearer", "bearer": { "token": "" } },
+            "method": "PUT",
+            "header": [],
+            "url": "{{workspaceIp}}:8082/v1/cart/checkout"
+          },
+          "response": []
+        }
+      ],
+      "id": "e453d4d4-7e00-404d-bed8-dd56ce709506"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "21db6a1d-5072-4cc9-ab00-ece801b4c21f",
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "2a920555-2edc-4193-a23a-ac87c5d49e33",
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "1b647177-79e7-49ee-b30f-40e86dc3480a",
+      "key": "token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDEyODk0ZDQ4NzVhMTA2MzcwM2VjMTciLCJpYXQiOjE2MTE4Mjc1MzMsImV4cCI6MTYxMTg0MTkzMywidHlwZSI6..."
+    },
+    {
+      "id": "3d41a637-6d40-405c-99ee-5d70aedeac1e",
+      "key": "ip",
+      "value": "13.233.8.95"
+    },
+    {
+      "id": "a80d6c34-5023-487a-8867-a09e179ac669",
+      "key": "userid",
+      "value": "600fe5fc1b35ad73eff74920"
+    }
+  ]
+}
